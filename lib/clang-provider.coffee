@@ -108,7 +108,7 @@ class ClangProvider
     resolve = (filepath) => filepath
     if cwd?
       resolve = (filepath) => path.resolve(cwd, filepath)
-    args = args.concat ("-I#{resolve(cwd,i)}" for i in atom.config.get "autocomplete-clang.includePaths")
+    args = args.concat ("-I#{resolve(i)}" for i in atom.config.get "autocomplete-clang.includePaths")
     try
       clangflags = ClangFlags.getClangFlags(editor.getPath())
       args = args.concat clangflags if clangflags
